@@ -9,7 +9,15 @@ body {
 a {
 	color: #333;
 }
-
+#welcomebar{
+    background-color:white;
+    border-radius:4px;
+    padding:5px;
+    
+    font-weight: bold;
+    text-decoration: none;
+    
+}
 #grp-image {
         border-radius: 1em;
 	-webkit-border-radius: 1em;
@@ -17,7 +25,7 @@ a {
 }
 #logout {
         position:relative;
-        top:-20px;
+        float:right;
 }
 #nav {
 	margin: 0;
@@ -176,12 +184,8 @@ html[xmlns] #nav {
 /*For Calendar */
 
 #right_top {
-    margin-left:70%;
     background-color:#ffffff;
-    padding-left:10px;
-    padding-right:5px;
-    padding-top:7px;
-    padding-bottom:7px;
+    padding:10px;
     position: relative;
     top : 5px;
 }
@@ -211,21 +215,26 @@ html[xmlns] #nav {
 .fc-button-content {
     padding: 0;
 }
-
+#content {
+    padding:15px;
+}
 /* For Polling Section */
 #right_bottom {
-    margin-left:70%;
-    position:relative;
-    top:10px;
     padding-top:5px;
     padding-left:10px;
     background-color:#ffffff;
+    position:relative;
+    top:20px;
 }
-#right{
-background
 /*for left Content Section */
 #left {
-    background-color:#ffffff;
-   margin-left:0%;
-   padding-top:7px;
+   background-color:#ffffff;
+   padding:10px;
+   float:left;
+   border-radius:9px;
+   
 }
+#right {
+    float:right;
+}
+

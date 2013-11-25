@@ -1,0 +1,15 @@
+<div id="horizontal_menu">
+<ul id="nav">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Profile</a>
+	<li><a href="#">Events</a>
+		<ul>
+			<li><a class = "contentloader" href="#" onclick= "loadcontent('./events/coding')">Coding Competition</a>
+			<li><a href="#">Quiz Competition</a>
+		</ul>
+	</li>
+	<li><a href="#">Photoes</a>	
+	<li><a class = "contentloader" href="#" onclick=loadcontent('./forum.php')>Alumni</a></li>
+	<li><a href="#">Forum</a></li>
+</ul>
+</div>

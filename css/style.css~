@@ -182,6 +182,8 @@ html[xmlns] #nav {
     padding-right:5px;
     padding-top:7px;
     padding-bottom:7px;
+    position: relative;
+    top : 5px;
 }
 #calendar {
     width: 250px;

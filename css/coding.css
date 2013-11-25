@@ -1,0 +1,27 @@
+#leader {
+    float:right;
+}
+#leader_table{
+    width:200px;
+    
+}
+.leader_board{
+    background-color:white;
+}
+#code-submission {
+    float:left;
+}
+h3{
+    background-color:ghostwhite;
+    text-align:center;
+}
+#ques_table {
+    float:left;
+    border-bottom-color:black;
+}
+#questiontext {
+    font-weight:bold;
+}
+#user-solution {
+    resize:none;
+}

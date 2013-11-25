@@ -44,8 +44,13 @@ class Student {
 	 * @access Protected
 	 */
 	var $batch;
+	/**
+	 * @var String Role of the student
+	 * @access Protected
+	 */
+	var $role;
 	
-	function __construct($name, $photo_url, $branch, $rollno, $mailid, $phoneno, $society, $batch) {
+	function __construct($name, $photo_url, $branch, $rollno, $mailid, $phoneno, $society, $batch,$role) {
 		$this->name = $name;
 		$this->photo_url = $photo_url;
 		$this->branch = $branch;
@@ -54,6 +59,7 @@ class Student {
 		$this->phoneno = $phoneno;
 		$this->society_name = $society;
 		$this->batch = $batch;
+		$this->role = $role;
 	}
 	
 	function getName() {
@@ -65,7 +71,7 @@ class Student {
     }
     
     function getBranch() {
-		$this->branch;
+		return $this->branch;
     }
     
     function getRollNo() {
@@ -86,5 +92,14 @@ class Student {
     
     function getBatch() {
 		return $this->batch;
+    }
+    function getRole() {
+		return $this->role;
+	}
+    static function getSelectedStudentName($con, $studentId) {
+        //$con = mysqli_connect($host, $user, $pass, $dbname);
+	    $res = $con->query("select name from Student where rollno = $studentId");
+	    $row = mysqli_fetch_array($res);
+	    return $row['name'];
     }
 }

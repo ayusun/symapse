@@ -1,0 +1,13 @@
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+        theme: false,
+        eventMouseover: function(event, jsEvent, view) {
+            if (view.name !== \'agendaDay\') {
+                $(jsEvent.target).attr('title', event.title);
+            }
+        },
+        
+       events: [{title:'qwerty',start:new Date(2013,10,1),end:new Date(2013,10,4)},{title:'qwerty',start:new Date(2013,10,7),end:new Date(2013,10,9)},{title:'zxsdfrtg',start:new Date(2013,10,15),end:new Date(2013,10,20)},{title:'asdfghjklouyt',start:new Date(2013,10,16),end:new Date(2013,10,23)}       ]
+    });
+
+});

@@ -1,0 +1,17 @@
+<?php
+echo "ayush";
+//$questionid = $_GET['id'];
+session_start();
+print_r($GLOBALS);
+
+$host = $_SESSION['host'];
+$user = $_SESSION['user']; 
+$pass = $_SESSION['pass']; 
+$dbname = $_SESSION['dbname'];
+echo $questionid;
+$con = mysqli_connect($host, $user, $pass, $dbname);
+//$result = $con->query("select * from code_ques where ques_id = '$questionid'") or die("died");
+$row = mysql_fetch_array($result);
+echo $row['cid']."---".$row['ques_id'];
+?>
+

@@ -1,0 +1,27 @@
+#dp {
+   
+}
+table{
+    table-layout:fixed;
+    width:40%;
+    border-color:black;
+    border:1;
+}
+#profilearea {
+    margin-left:20%;
+    padding-top:9px;
+}
+#imagearea {
+   
+    margin-left:25%;
+    
+}
+tr {
+    line-height:27px;
+}    
+td{
+    width : 250px;
+    text-align:center;
+    background-color:lavender;
+    font-weight:bold;
+}

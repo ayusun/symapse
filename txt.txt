@@ -1,0 +1,8 @@
+$(document).ready(function() {$('#calendar').fullCalendar({theme: false,eventMouseover: function(event, jsEvent, view) {
+            if (view.name !== 'agendaDay') {
+                $(jsEvent.target).attr('title', event.title);
+            }
+        },events: [{title:'qwerty',start:new Date(1,1,1),end:new Date(1,2,3)},{title:'asdfg',start:new Date(2,2,2),end:new Date(3,3,3)},{title:'asdfg',start:new Date(4,2,2),end:new Date(3,3,3)} ]
+    });
+
+});

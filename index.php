@@ -1,9 +1,15 @@
 <?php
 include_once("./lib/Student.class.php");
-session_start();
+include_once("./session.php");
 if(!isset($_SESSION['MAMA'])) {
     include "./login.php";
 }
 else
-    include "./home.php";
+{	$studentObject = unserialize($_SESSION['MAMA']);
+	$role = $studentObject->getRole();
+	if($role == 'admin')
+		include "./admin.php";
+	else
+		include "./home.php";
+}
 ?>
