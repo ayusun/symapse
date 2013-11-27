@@ -1,0 +1,255 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.7
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 27, 2013 at 11:31 AM
+-- Server version: 5.5.34-0ubuntu0.12.04.1
+-- PHP Version: 5.3.10-1ubuntu3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `socmgmt`
+--
+Create Database IF NOT EXISTS `socmgmt`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alumni`
+--
+
+CREATE TABLE IF NOT EXISTS `alumni` (
+  `index` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) NOT NULL,
+  `batch` varchar(15) NOT NULL,
+  `photo` varchar(200) NOT NULL,
+  `desc` varchar(2000) NOT NULL,
+  `society` varchar(50) NOT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `code_ques`
+--
+
+CREATE TABLE IF NOT EXISTS `code_ques` (
+  `cid` int(11) NOT NULL,
+  `ques_id` varchar(11) NOT NULL,
+  `ques_url` varchar(100) NOT NULL,
+  `marks` int(11) NOT NULL,
+  PRIMARY KEY (`cid`,`ques_id`),
+  KEY `ques_id` (`ques_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `code_user`
+--
+
+CREATE TABLE IF NOT EXISTS `code_user` (
+  `cid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `questid` varchar(11) NOT NULL,
+  PRIMARY KEY (`cid`,`userid`,`questid`),
+  KEY `userid` (`userid`),
+  KEY `questid` (`questid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Coding`
+--
+
+CREATE TABLE IF NOT EXISTS `Coding` (
+  `Cid` int(11) NOT NULL AUTO_INCREMENT,
+  `cname` varchar(40) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  PRIMARY KEY (`Cid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `commentid` int(11) NOT NULL AUTO_INCREMENT,
+  `commentdesc` varchar(100) NOT NULL,
+  `postid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`commentid`),
+  KEY `postid` (`postid`),
+  KEY `userid` (`userid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE IF NOT EXISTS `files` (
+  `index` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `desc` varchar(1000) NOT NULL,
+  `society` varchar(20) NOT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Forum`
+--
+
+CREATE TABLE IF NOT EXISTS `Forum` (
+  `postid` int(11) NOT NULL AUTO_INCREMENT,
+  `postdesc` varchar(100) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `society` varchar(30) NOT NULL,
+  PRIMARY KEY (`postid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Quiz`
+--
+
+CREATE TABLE IF NOT EXISTS `Quiz` (
+  `quizid` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(40) NOT NULL,
+  `startdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `enddate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `society` varchar(40) NOT NULL,
+  PRIMARY KEY (`quizid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Quiz_question`
+--
+
+CREATE TABLE IF NOT EXISTS `Quiz_question` (
+  `qnid` int(11) NOT NULL AUTO_INCREMENT,
+  `quizid` int(11) NOT NULL,
+  `questionText` varchar(200) NOT NULL,
+  `type` int(11) NOT NULL COMMENT 'subjective/mcq',
+  `correctans` varchar(40) NOT NULL,
+  PRIMARY KEY (`qnid`),
+  KEY `quizid` (`quizid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Quiz_question_option`
+--
+
+CREATE TABLE IF NOT EXISTS `Quiz_question_option` (
+  `qnid` int(11) NOT NULL,
+  `options` varchar(40) NOT NULL,
+  PRIMARY KEY (`qnid`,`options`),
+  KEY `qnid` (`qnid`),
+  KEY `options` (`options`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Quiz_user`
+--
+
+CREATE TABLE IF NOT EXISTS `Quiz_user` (
+  `quizid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`quizid`,`userid`),
+  KEY `quizid` (`quizid`),
+  KEY `userid` (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student`
+--
+
+CREATE TABLE IF NOT EXISTS `Student` (
+  `name` varchar(30) NOT NULL,
+  `batch` int(11) NOT NULL,
+  `phoneno` bigint(13) NOT NULL,
+  `mailid` varchar(50) NOT NULL,
+  `branch` varchar(30) NOT NULL,
+  `photo` varchar(50) NOT NULL,
+  `rollno` int(11) NOT NULL,
+  `society` varchar(20) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `role` varchar(30) NOT NULL,
+  PRIMARY KEY (`rollno`,`society`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `code_ques`
+--
+ALTER TABLE `code_ques`
+  ADD CONSTRAINT `code_ques_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `Coding` (`Cid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `code_user`
+--
+ALTER TABLE `code_user`
+  ADD CONSTRAINT `code_user_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `Coding` (`Cid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `code_user_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `Student` (`rollno`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `code_user_ibfk_3` FOREIGN KEY (`questid`) REFERENCES `code_ques` (`ques_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`postid`) REFERENCES `Forum` (`postid`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `Student` (`rollno`);
+
+--
+-- Constraints for table `Quiz_question`
+--
+ALTER TABLE `Quiz_question`
+  ADD CONSTRAINT `Quiz_question_ibfk_1` FOREIGN KEY (`quizid`) REFERENCES `Quiz` (`quizid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Quiz_question_option`
+--
+ALTER TABLE `Quiz_question_option`
+  ADD CONSTRAINT `Quiz_question_option_ibfk_1` FOREIGN KEY (`qnid`) REFERENCES `Quiz_question` (`qnid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Quiz_user`
+--
+ALTER TABLE `Quiz_user`
+  ADD CONSTRAINT `Quiz_user_ibfk_1` FOREIGN KEY (`quizid`) REFERENCES `Quiz` (`quizid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Quiz_user_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `Student` (`rollno`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
