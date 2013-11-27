@@ -20,3 +20,11 @@ Polling: Can take the common view of students on certain topics.
 Coding and quiz competitions: Students can take part in quiz and coding competitions that are going to be held online.
 
 Photo Update : Can update the photos and videos of the society sessions.
+
+
+For Current Login
+<pre>Login Type         Username   Password</pre>
+<pre> Konnexions        1005036    ayush</pre>
+<pre>Konnexions-admin   1005082    admin</pre>
+<pre>Qutopia            1005008    aditi</pre>
+<pre>Qutoia-admin       1005033    arya</pre>
